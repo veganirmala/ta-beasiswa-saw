@@ -11,6 +11,20 @@
                 <form action="/registrasi" method="post">
                     @csrf
                     <div class="input-group mb-3">
+                        <input type="text" name="nim" class="form-control @error('nim')is-invalid @enderror"
+                            placeholder="NIM Mahasiswa" value="{{ old('nim') }}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-id-card"></span>
+                            </div>
+                        </div>
+                        @error('nim')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="input-group mb-3">
                         <input type="text" name="name" class="form-control @error('name')is-invalid @enderror"
                             placeholder="Full name" value="{{ old('name') }}">
                         <div class="input-group-append">

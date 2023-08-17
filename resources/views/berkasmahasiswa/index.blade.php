@@ -20,6 +20,10 @@
         <div class="alert alert-success col-12" role="alert">
             {{ session('success') }}
         </div>
+    @elseif (session()->has('danger'))
+        <div class="alert alert-danger col-12" role="alert">
+            {{ session('danger') }}
+        </div>
     @endif
 
 
@@ -67,7 +71,9 @@
                                         <td>{{ $berkas->keterangan }}</td>
                                         <td>
                                             <a href="/berkasmahasiswa/{{ $berkas->nim }}/show">View</a>
+                                        @if(Session::get('user_level') == 'Admin')
                                             <a href="/berkasmahasiswa/{{ $berkas->nim }}/edit">Edit</a>
+                                        @endif
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

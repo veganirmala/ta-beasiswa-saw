@@ -22,9 +22,19 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+            //ambil data user
+            $user = Auth::user();
+            //membuat session yang akan melekat setelah login
+            session()->put('user_id', $user->id);
+            session()->put('user_nim', $user->nim);
+            session()->put('user_level', $user->level);
             $request->session()->regenerate();
 
-            return redirect()->intended('/dashboard');
+            if($user->level == "Admin") {
+                return redirect()->intended('/dashboard');
+            } else {
+                return redirect()->intended('/berkasmahasiswa');
+            }
         }
         return back()->withInput(
             $request->except('password')

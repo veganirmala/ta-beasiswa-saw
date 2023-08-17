@@ -8,13 +8,19 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade;
 use Illuminate\Support\Facades\Storage;
 use stdClass;
+use Session;
 
 class BerkasMahasiswaController extends Controller
 {
     public function index()
     {
-        //mengambil semua data diurutkan dari yg terbaru DESC
-        $berkasmahasiswa = BerkasMahasiswa::latest()->paginate(5);
+        if(Session::get('user_level') == 'Admin') {
+            //mengambil semua data diurutkan dari yg terbaru DESC
+            $berkasmahasiswa = BerkasMahasiswa::latest()->paginate(5);
+        } else {
+            $nim = Session::get('user_nim');
+            $berkasmahasiswa = BerkasMahasiswa::where('tb_berkas_mahasiswa.nim', $nim)->latest()->paginate(5);
+        }
 
         //tampilkan halaman index
         return view('berkasmahasiswa/index', data: compact('berkasmahasiswa'));
@@ -86,13 +92,16 @@ class BerkasMahasiswaController extends Controller
             ->first();
 
         $file_path = new stdClass();
+        if($berkasmahasiswa) {
+            $file_path->dokumen_kepribadian = '/storage/uploads/' . $berkasmahasiswa->dokumen_kepribadian;
+            $file_path->dokumen_khs = '/storage/uploads/' . $berkasmahasiswa->dokumen_khs;
+            $file_path->dokumen_penghasilan = '/storage/uploads/' . $berkasmahasiswa->dokumen_penghasilan;
+            $file_path->dokumen_nilai_prestasi = '/storage/uploads/' . $berkasmahasiswa->dokumen_nilai_prestasi;
+            return view('berkasmahasiswa/show', data: compact('berkasmahasiswa', 'file_path'));
+        } else {
+            return redirect('/berkasmahasiswa')->with('danger', 'Data Berkas Belum ditinjau !');
+        }
 
-        $file_path->dokumen_kepribadian = '/storage/uploads/' . $berkasmahasiswa->dokumen_kepribadian;
-        $file_path->dokumen_khs = '/storage/uploads/' . $berkasmahasiswa->dokumen_khs;
-        $file_path->dokumen_penghasilan = '/storage/uploads/' . $berkasmahasiswa->dokumen_penghasilan;
-        $file_path->dokumen_nilai_prestasi = '/storage/uploads/' . $berkasmahasiswa->dokumen_nilai_prestasi;
-
-        return view('berkasmahasiswa/show', data: compact('berkasmahasiswa', 'file_path'));
     }
 
     public function edit($nim)
@@ -124,7 +133,13 @@ class BerkasMahasiswaController extends Controller
 
     public function detail()
     {
-        $berkasmahasiswa = BerkasMahasiswa::latest()->paginate(5);
+        if(Session::get('user_level') == 'Admin') {
+            //mengambil semua data diurutkan dari yg terbaru DESC
+            $berkasmahasiswa = BerkasMahasiswa::latest()->paginate(5);
+        } else {
+            $nim = Session::get('user_nim');
+            $berkasmahasiswa = BerkasMahasiswa::where('tb_berkas_mahasiswa.nim', $nim)->latest()->paginate(5);
+        }
 
         //tampilkan halaman index
         return view('berkasmahasiswa/detail', data: compact('berkasmahasiswa'));

@@ -10,6 +10,8 @@
             <h3>Tambah Data Berkas Mahasiswa</h3>
             <form action="/berkasmahasiswa/create" method="POST" enctype="multipart/form-data">
                 @csrf
+
+                @if (Session::get('user_level') == 'Admin')
                 <div class="form-group">
                     <label for="nim">NIM<span style="color:red;">*</span></label>
                     <input type="text" name="nim" class="form-control @error('nim') is-invalid @enderror"
@@ -20,6 +22,13 @@
                         </div>
                     @enderror
                 </div>
+                @else
+                <div class="form-group">
+                    <label for="nim">NIM<span style="color:red;">*</span></label>
+                    <input type="text" name="nim" class="form-control @error('nim') is-invalid @enderror"
+                        id="nim" placeholder="NIM Mahasiswa" required autofocus value="{{ Session::get('user_nim') }}" readonly>
+                </div>
+                @endif
                 <div class="form-group">
                     <label for="dokumen_kepribadian">Dokumen Kepribadian<span style="color:red;">*</span></label>
                     <input name="dokumen_kepribadian" id="dokumen_kepribadian"

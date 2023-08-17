@@ -30,8 +30,8 @@
                               </p>
                           </a>
                       </li>
-                  @endif
-                  <li class="nav-item">
+                @elseif(auth()->User()->level == 'Admin')
+                    <li class="nav-item">
                       <a href="/berkasmahasiswa" class="nav-link">
                           <i class="far fa fa-users nav-icon"></i>
                           <p>
@@ -108,6 +108,9 @@
                       </a>
                   </li>
               </ul>
+              @else
+
+              @endif
           </nav>
           <!-- /.sidebar-menu -->
       </div>
