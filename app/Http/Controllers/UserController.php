@@ -86,10 +86,9 @@ class UserController extends Controller
             'name' => 'required|max:255',
             'jk' => 'required',
             'no_telp' => 'required',
-            'alamat' => 'required',
-            'level' => 'required'
-
+            'alamat' => 'required'
         ]);
+
         //proses enkripsi password
         $validatedData['password'] = bcrypt($validatedData['password']);
 
@@ -99,6 +98,30 @@ class UserController extends Controller
         $user->update($validatedData);
 
         return redirect('/user')->with('success', 'Data User Berhasil diedit !');
+    }
+
+    public function editPassword()
+    {
+        $id = Auth::id();
+        $user = User::find($id);
+        return view('user/ubahpassword', compact('user'));
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $id = Auth::id();
+        $user = User::find($id);
+        //membuat form validasi
+        $validatedData = $request->validate([
+            'password' => 'required'
+        ]);
+        //proses enkripsi password
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+        //mengambil data yg akan diupdate
+        $user->update($validatedData);
+
+        return redirect('/dashboard')->with('success', 'Password Berhasil diedit !');
     }
 
     public function updateProfile(Request $request)

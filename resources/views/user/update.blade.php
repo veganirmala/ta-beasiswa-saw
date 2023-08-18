@@ -54,20 +54,6 @@
                         </div>
                     @enderror
                 </div>
-                <div class="form-group">
-                    <label for="level">Level<span style="color:red;">*</span></label>
-                    <select class="form-control @error('level') is-invalid @enderror" tabindex="-1" aria-hidden="true"
-                        name="level" id="level" value="{{ old('level', $user->level) }}">
-                        <option value="<?= $user['level'] ?>"><?= $user['level'] ?></option>
-                        <option value="Admin">Admin</option>
-                        <option value="Mahasiswa">Mahasiswa</option>
-                    </select>
-                    @error('level')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
                 <button type="submit" value="Simpan" name="submit" class="btn btn-success btn-user">
                     Simpan
                 </button>

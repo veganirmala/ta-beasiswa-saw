@@ -36,17 +36,17 @@ Route::group(['middleware' => ['guest']], function () {
 
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'authenticate'])->name('login-process');
-
     Route::get('/registrasi', [RegisterController::class, 'index'])->name('register');
     Route::post('/registrasi', [RegisterController::class, 'store'])->name('register-process');
 });
 
 
-Route::group(['middleware' => ['auth'], 'cekLevel:Mahasiswa'], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [Dashboard::class, 'index']);
-
     Route::get('edit-profile', [UserController::class, 'editProfile']);
     Route::put('update-profile', [UserController::class, 'updateProfile']);
+    Route::get('edit-password', [UserController::class, 'editPassword']);
+    Route::put('update-password', [UserController::class, 'updatePassword']);
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::get('/berkasmahasiswa', [BerkasMahasiswaController::class, 'index']);
@@ -62,7 +62,6 @@ Route::group(['middleware' => ['auth'], 'cekLevel:Mahasiswa'], function () {
 //Route::middleware(['auth'])->group(function () {
 Route::group(['middleware' => ['auth'], 'cekLevel:Admin'], function () {
     Route::get('/dashboard', [Dashboard::class, 'index']);
-
     Route::get('edit-profile', [UserController::class, 'editProfile']);
     Route::put('update-profile', [UserController::class, 'updateProfile']);
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

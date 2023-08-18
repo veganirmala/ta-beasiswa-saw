@@ -53,6 +53,10 @@
                         <i class="fas fa-user-edit fa-sm fa-fw mr-2 text-gray-400"></i>
                         Edit Profile
                     </a>
+                    <a class="dropdown-item" href={{ '/edit-password' }}>
+                        <i class="fas fa-user-edit fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Ubah Password
+                    </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
