@@ -80,9 +80,9 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
-                            <div class="d-flex justify-content-end">
+                            {{-- <div class="d-flex justify-content-end">
                                 {{ $jenis->links() }}
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

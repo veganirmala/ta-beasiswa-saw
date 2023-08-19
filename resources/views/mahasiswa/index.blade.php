@@ -87,9 +87,9 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
-                            <div class="d-flex justify-content-end">
+                            {{-- <div class="d-flex justify-content-end">
                                 {{ $mahasiswa->links() }}
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
