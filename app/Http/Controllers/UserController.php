@@ -11,11 +11,16 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //mengambil semua data user diurutkan dari yg terbaru DESC
-        $users = User::latest()->paginate(5);
+        //$users = User::latest()->paginate(5);
 
+        if ($request->has('search')) {
+            $users = User::where('name', 'LIKE', '%' . $request->search . '%')->paginate(5);
+        } else {
+            $users = User::latest()->paginate(5);
+        }
         //tampilkan halaman index
         return view('user/index', data: compact('users'));
     }

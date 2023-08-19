@@ -11,9 +11,14 @@ class TahunUsulanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tahunusulan = TahunUsulan::latest()->paginate(5);
+        if ($request->has('search')) {
+            $tahunusulan = TahunUsulan::where('tahun', 'LIKE', '%' . $request->search . '%')->paginate(5);
+        } else {
+            $tahunusulan = TahunUsulan::latest()->paginate(5);
+        }
+        //$tahunusulan = TahunUsulan::latest()->paginate(5);
 
         //tampilkan halaman index
         return view('tahunusulan/index', data: compact('tahunusulan'));

@@ -71,15 +71,18 @@
                                         <td>{{ $berkas->keterangan }}</td>
                                         <td>
                                             <a href="/berkasmahasiswa/{{ $berkas->nim }}/show">View</a>
-                                        @if(Session::get('user_level') == 'Admin')
-                                            <a href="/berkasmahasiswa/{{ $berkas->nim }}/edit">Edit</a>
-                                        @endif
+                                            @if (Session::get('user_level') == 'Admin')
+                                                <a href="/berkasmahasiswa/{{ $berkas->nim }}/edit">Edit</a>
+                                            @endif
                                         </td>
                                     </tr>
                                     <?php $i++; ?>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+                            <div class="d-flex justify-content-end">
+                                {{ $jenis->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>

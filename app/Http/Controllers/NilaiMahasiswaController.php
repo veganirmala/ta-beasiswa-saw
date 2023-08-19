@@ -12,8 +12,14 @@ class NilaiMahasiswaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->has('search')) {
+            $nilaimahasiswa = NilaiMahasiswa::where('nim', 'LIKE', '%' . $request->search . '%')->paginate(5);
+        } else {
+            $nilaimahasiswa = NilaiMahasiswa::latest()->paginate(5);
+        }
+
         $nilaimahasiswa = NilaiMahasiswa::latest()->paginate(5);
         //tampilkan halaman index
         return view('nilaimahasiswa/index', data: compact('nilaimahasiswa'));

@@ -30,6 +30,18 @@
                 <div class="card">
                     <!-- /.card-header -->
                     <div class="card-body">
+                        <div class="row">
+                            <div class="d-flex justify-content-end">
+                                <form action="/bobotkriteria" method="GET">
+                                    <div class="input-group mb-3">
+                                        <div class="col-auto">
+                                            <input type="search" class="form-control" placeholder="Search"
+                                                name="search" id="search">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <a href="/bobotkriteria/create" class="btn btn-primary" title="Tambah Data"><i
                                 class="fas fa-plus"></i> Tambah</a>
                         <p></p>
@@ -80,6 +92,9 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+                            <div class="d-flex justify-content-end">
+                                {{ $jenis->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>

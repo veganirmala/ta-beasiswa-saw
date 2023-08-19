@@ -11,12 +11,17 @@ class ProdiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //mengambil semua data user diurutkan dari yg terbaru DESC
-        $prodi = Prodi::latest()->paginate(5);
+        if ($request->has('search')) {
+            $prodi = Prodi::where('nama_prodi', 'LIKE', '%' . $request->search . '%')->paginate(5);
+        } else {
+            $prodi = Prodi::latest()->paginate(5);
+        }
 
-        //tampilkan halaman index
+        //mengambil semua data user
+        // $prodi = Prodi::latest()->paginate(5);
+
         return view('prodi/index', data: compact('prodi'));
     }
 

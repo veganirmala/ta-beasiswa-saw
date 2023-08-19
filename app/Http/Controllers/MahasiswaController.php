@@ -15,6 +15,23 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
+        // if ($request->has('search')) {
+
+        //     $mahasiswa = DB::table('tb_mahasiswa')
+        //         ->join('tb_tahun_usulan', 'tb_mahasiswa.id_tahun_usulan', '=', 'tb_tahun_usulan.id')
+        //         ->join('tb_prodi', 'tb_mahasiswa.id_prodi', '=', 'tb_prodi.id')
+        //         ->select('*')
+        //         ->get()
+        //         ->where('nim', 'LIKE', '%' . $request->search . '%')->paginate(5);
+        // } else {
+        //     $mahasiswa = DB::table('tb_mahasiswa')
+        //         ->join('tb_tahun_usulan', 'tb_mahasiswa.id_tahun_usulan', '=', 'tb_tahun_usulan.id')
+        //         ->join('tb_prodi', 'tb_mahasiswa.id_prodi', '=', 'tb_prodi.id')
+        //         ->select('*')
+        //         ->get()
+        //         ->paginate(5);
+        // }
+
         //mengambil semua data
         $mahasiswa = DB::table('tb_mahasiswa')
             ->join('tb_tahun_usulan', 'tb_mahasiswa.id_tahun_usulan', '=', 'tb_tahun_usulan.id')

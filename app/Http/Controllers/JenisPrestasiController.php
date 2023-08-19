@@ -10,11 +10,15 @@ class JenisPrestasiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //mengambil semua data diurutkan dari yg terbaru DESC
-        $jenis = JenisPrestasi::latest()->paginate(5);
-
+        //$jenis = JenisPrestasi::latest()->paginate(5);
+        if ($request->has('search')) {
+            $jenis = JenisPrestasi::where('jenis_prestasi', 'LIKE', '%' . $request->search . '%')->paginate(5);
+        } else {
+            $jenis = JenisPrestasi::latest()->paginate(5);
+        }
         //tampilkan halaman index
         return view('jenisprestasi/index', data: compact('jenis'));
     }
