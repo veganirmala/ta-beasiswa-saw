@@ -18,17 +18,11 @@ return new class extends Migration
             $table->string('jk');
             $table->unsignedBigInteger('id_prodi');
             $table->foreign('id_prodi')->references('id')->on('tb_prodi');
-            $table->string('email');
             $table->string('no_telp');
             $table->string('alamat');
-            $table->string('nama_ayah');
             $table->string('pekerjaan_ayah');
-            $table->integer('penghasilan_ayah');
-            $table->string('nama_ibu');
-            $table->string('pekerjaan_ibu');
-            $table->integer('penghasilan_ibu');
             $table->integer('tanggungan');
-            $table->integer('total_penghasilan');
+            $table->float('total_penghasilan');
             $table->string('nama_bank');
             $table->string('no_rek');
             $table->integer('semester');

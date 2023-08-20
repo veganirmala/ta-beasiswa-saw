@@ -11,9 +11,8 @@ class Mahasiswa extends Model
     protected $table = "tb_mahasiswa";
     protected $primaryKey = "nim";
     protected $fillable = [
-        'nim', 'nama', 'jk', 'id_prodi', 'email',
-        'no_telp', 'alamat', 'nama_ayah', 'pekerjaan_ayah', 'penghasilan_ayah',
-        'nama_ibu', 'pekerjaan_ibu', 'penghasilan_ibu', 'tanggungan',
+        'nim', 'nama', 'jk', 'id_prodi',
+        'no_telp', 'alamat', 'pekerjaan_ayah', 'tanggungan',
         'total_penghasilan', 'nama_bank', 'no_rek', 'semester', 'id_tahun_usulan'
     ];
 

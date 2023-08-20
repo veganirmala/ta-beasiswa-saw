@@ -60,17 +60,6 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="email">Email Mahasiswa<span style="color:red;">*</span></label>
-                                <input type="text" name="email"
-                                    class="form-control @error('email') is-invalid @enderror" id="email"
-                                    placeholder="Email Mahasiswa" required value="{{ old('email') }}">
-                                @error('email')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
                                 <label for="no_telp">No Telepon Mahasiswa<span style="color:red;">*</span></label>
                                 <input type="text" name="no_telp"
                                     class="form-control @error('no_telp') is-invalid @enderror" id="no_telp"
@@ -93,17 +82,6 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="nama_ayah">Nama Ayah<span style="color:red;">*</span></label>
-                                <input type="text" name="nama_ayah"
-                                    class="form-control @error('nama_ayah') is-invalid @enderror" id="nama_ayah"
-                                    placeholder="Nama Ayah" required value="{{ old('nama_ayah') }}">
-                                @error('nama_ayah')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
                                 <label for="pekerjaan_ayah">Pekerjaan Ayah<span style="color:red;">*</span></label>
                                 <input type="text" name="pekerjaan_ayah"
                                     class="form-control @error('pekerjaan_ayah') is-invalid @enderror"
@@ -115,82 +93,46 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="penghasilan_ayah">Penghasilan Ayah<span
-                                        style="color:red;">*</span></label>
-                                <input type="text" name="penghasilan_ayah"
-                                    class="form-control @error('penghasilan_ayah') is-invalid @enderror"
-                                    id="penghasilan_ayah" onkeyup="sum();" placeholder="Penghasilan Ayah" required
-                                    value="{{ old('penghasilan_ayah') }}">
-                                @error('penghasilan_ayah')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
                         </div>
                     </div>
                     <!-- akhir kolom 1 -->
                     <!-- awal kolom 2 -->
                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tanggungan">Jumlah Tanggungan Orang Tua<span style="color:red;">*</span></label>
+                            <input type="text" name="tanggungan"
+                                class="form-control @error('tanggungan') is-invalid @enderror" id="tanggungan"
+                                placeholder="Jumlah Tanggungan Orang Tua" required value="{{ old('tanggungan') }}">
+                            @error('tanggungan')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="nama_ibu">Nama Ibu<span style="color:red;">*</span></label>
-                                <input type="text" name="nama_ibu"
-                                    class="form-control @error('nama_ibu') is-invalid @enderror" id="nama_ibu"
-                                    placeholder="Nama Ibu" required value="{{ old('nama_ibu') }}">
-                                @error('nama_ibu')
+                                <label for="total_penghasilan">Penghasilan Ayah<span style="color:red;">*</span></label>
+                                <input type="text" name="total_penghasilan"
+                                    class="form-control @error('total_penghasilan') is-invalid @enderror"
+                                    id="total_penghasilan" onkeyup="sum();" placeholder="Penghasilan Ayah" required
+                                    value="{{ old('total_penghasilan') }}">
+                                @error('total_penghasilan')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="pekerjaan_ibu">Pekerjaan Ibu<span style="color:red;">*</span></label>
-                                <input type="text" name="pekerjaan_ibu"
-                                    class="form-control @error('pekerjaan_ibu') is-invalid @enderror"
-                                    id="pekerjaan_ibu" placeholder="Pekerjaan Ibu" required
-                                    value="{{ old('pekerjaan_ibu') }}">
-                                @error('pekerjaan_ibu')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="penghasilan_ibu">Penghasilan Ibu<span style="color:red;">*</span></label>
-                                <input type="text" name="penghasilan_ibu"
-                                    class="form-control @error('penghasilan_ibu') is-invalid @enderror"
-                                    id="penghasilan_ibu" onkeyup="sum();" placeholder="Penghasilan Ibu" required
-                                    value="{{ old('penghasilan_ibu') }}">
-                                @error('penghasilan_ibu')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="tanggungan">Tanggungan Orang Tua<span style="color:red;">*</span></label>
-                                <input type="text" name="tanggungan"
-                                    class="form-control @error('tanggungan') is-invalid @enderror" id="tanggungan"
-                                    placeholder="Tanggungan Orang Tua" required value="{{ old('tanggungan') }}">
-                                @error('tanggungan')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="total_penghasilan">Total Penghasilan Orang Tua<span
-                                        style="color:red;">*</span></label>
-                                <input type="text" class="form-control" id="total_penghasilan"
-                                    name="total_penghasilan" placeholder="Total Penghasilan Orang Tua" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="nama_bank">Nama BANK<span style="color:red;">*</span></label>
-                                <input type="text" name="nama_bank"
-                                    class="form-control @error('nama_bank') is-invalid @enderror" id="nama_bank"
-                                    placeholder="Nama BANK" required value="{{ old('nama_bank') }}">
+                                <select class="form-control @error('nama_bank') is-invalid @enderror" tabindex="-1"
+                                    aria-hidden="true" name="nama_bank" id="nama_bank"
+                                    value="{{ old('nama_bank') }}">
+                                    <option value="BRI">BRI</option>
+                                    <option value="BNI">BNI</option>
+                                    <option value="BCA">BCA</option>
+                                    <option value="MANDIRI">MANDIRI</option>
+                                    <option value="BPD">BPD</option>
+                                </select>
                                 @error('nama_bank')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -263,7 +205,7 @@
     <!-- /.content -->
 </div>
 
-<script>
+{{-- <script>
     function sum() {
         var txtFirstNumberValue = document.getElementById('penghasilan_ayah').value;
         var txtSecondNumberValue = document.getElementById('penghasilan_ibu').value;
@@ -274,66 +216,12 @@
     }
 </script>
 
-{{-- <script type="text/javascript">
-    var rupiah = document.getElementById('totalpenghasilan');
-    totalpenghasilan.addEventListener('keyup', function(e) {
-        //tambahkan 'Rp.' pada saat form di ketik
-        //gunakan fungsi formatRupiah() untuk mengubah angka yang diketik menjadi format angka
-        totalpenghasilan.value = formatRupiah(this.value, 'Rp.');
-    });
-
-    /* fungsi formatRupiah() */
-    function formatRupiah(angka, prefix) {
-        var number_string = angka.replace(/[^,\d]/g, '').toString(),
-            split = number_string.split(','),
-            sisa = split[0].length % 3,
-            rupiah = split[0].substr(0, sisa),
-            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-        //tambahkan titik jika yang diinput sudah menjadi angka ribuan
-        if (ribuan) {
-            separator = sisa ? '.' : '';
-            rupiah += separator + ribuan.join('.');
-        }
-
-        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-        return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
-    }
-</script>
-
 <script type="text/javascript">
-    var rupiah = document.getElementById('penghasilanayah');
-    penghasilanayah.addEventListener('keyup', function(e) {
+    var rupiah = document.getElementById('total_penghasilan');
+    total_penghasilan.addEventListener('keyup', function(e) {
         //tambahkan 'Rp.' pada saat form di ketik
         //gunakan fungsi formatRupiah() untuk mengubah angka yang diketik menjadi format angka
-        penghasilanayah.value = formatRupiah(this.value, 'Rp.');
-    });
-
-    /* fungsi formatRupiah() */
-    function formatRupiah(angka, prefix) {
-        var number_string = angka.replace(/[^,\d]/g, '').toString(),
-            split = number_string.split(','),
-            sisa = split[0].length % 3,
-            rupiah = split[0].substr(0, sisa),
-            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-        //tambahkan titik jika yang diinput sudah menjadi angka ribuan
-        if (ribuan) {
-            separator = sisa ? '.' : '';
-            rupiah += separator + ribuan.join('.');
-        }
-
-        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-        return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
-    }
-</script>
-
-<script type="text/javascript">
-    var rupiah = document.getElementById('penghasilanibu');
-    penghasilanibu.addEventListener('keyup', function(e) {
-        //tambahkan 'Rp.' pada saat form di ketik
-        //gunakan fungsi formatRupiah() untuk mengubah angka yang diketik menjadi format angka
-        penghasilanibu.value = formatRupiah(this.value, 'Rp.');
+        total_penghasilan.value = formatRupiah(this.value, 'Rp.');
     });
 
     /* fungsi formatRupiah() */
@@ -354,4 +242,5 @@
         return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
     }
 </script> --}}
+
 @include('template.footer')

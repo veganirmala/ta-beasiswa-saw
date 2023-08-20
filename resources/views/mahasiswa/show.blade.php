@@ -24,19 +24,12 @@
                                     <p class="card-text"><?= $mahasiswa['jk'] ?></p>
                                     <h4 class="card-title">Nama Prodi</h4>
                                     <p class="card-text"><?= $mahasiswa['nama_prodi'] ?></p>
-                                    <h4 class="card-title">E-mail</h4>
-                                    <p class="card-text"><?= $mahasiswa['email'] ?></p>
                                     <h4 class="card-title">No Telepon Mahasiswa</h4>
                                     <p class="card-text"><?= $mahasiswa['no_telp'] ?></p>
                                     <h4 class="card-title">Alamat Mahasiswa</h4>
                                     <p class="card-text"><?= $mahasiswa['alamat'] ?></p>
-                                    <h4 class="card-title">Nama Ayah</h4>
-                                    <p class="card-text"><?= $mahasiswa['nama_ayah'] ?></p>
                                     <h4 class="card-title">Pekerjaan Ayah</h4>
                                     <p class="card-text"><?= $mahasiswa['pekerjaan_ayah'] ?></p>
-                                    <h4 class="card-title">Penghasilan Ayah</h4>
-                                    <p class="card-text"><?= 'Rp ' . number_format($mahasiswa['penghasilan_ayah']) ?>
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -45,13 +38,7 @@
                         <div class="col-md-6">
                             <div class="col">
                                 <div class="card-body">
-                                    <h4 class="card-title">Nama Ibu</h4>
-                                    <p class="card-text"><?= $mahasiswa['nama_ibu'] ?></p>
-                                    <h4 class="card-title">Pekerjaan Ibu</h4>
-                                    <p class="card-text"><?= $mahasiswa['pekerjaan_ibu'] ?></p>
-                                    <h4 class="card-title">Penghasilan Ibu</h4>
-                                    <p class="card-text"><?= 'Rp ' . number_format($mahasiswa['penghasilan_ibu']) ?></p>
-                                    <h4 class="card-title">Tanggungan Orang Tua</h4>
+                                    <h4 class="card-title">Jumlah Tanggungan Orang Tua</h4>
                                     <p class="card-text"><?= $mahasiswa['tanggungan'] ?></p>
                                     <h4 class="card-title">Total Penghasilan Orang Tua</h4>
                                     <p class="card-text"><?= 'Rp ' . number_format($mahasiswa['total_penghasilan']) ?>
