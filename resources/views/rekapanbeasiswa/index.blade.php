@@ -65,8 +65,8 @@
                                             <th>No</th>
                                             <th>NIM</th>
                                             <th>Tahun Usulan</th>
+                                            <th>Skor Pribadi</th>
                                             <th>Skor IPK</th>
-                                            {{-- <th>Skor Pribadi</th> --}}
                                             <th>Skor Prestasi</th>
                                             <th>Skor Ekonomi</th>
                                             <th>Skor Total</th>
@@ -87,6 +87,7 @@
                                             <th scope="row"><?= $i ?></th>
                                             <td>{{ $rekapans->nim }}</td>
                                             <td>{{ $rekapans->tahun }}</td>
+                                            <td>{{ $rekapans->skor_kepribadian }}</td>
                                             <td>{{ $rekapans->skor_ipk }}</td>
                                             <td>{{ $rekapans->skor_prestasi }}</td>
                                             <td>{{ $rekapans->skor_ekonomi }}</td>
