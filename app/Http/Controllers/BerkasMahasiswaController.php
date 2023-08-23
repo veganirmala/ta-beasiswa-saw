@@ -12,11 +12,17 @@ use Session;
 
 class BerkasMahasiswaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         if(Session::get('user_level') == 'Admin') {
+            if ($request->has('search')) {
+                $berkasmahasiswa = BerkasMahasiswa::where('nim', 'LIKE', '%' . $request->search . '%')
+                ->orwhere('status', 'LIKE', '%' . $request->search . '%')
+                ->latest()->paginate(5);
+            } else {  
             //mengambil semua data diurutkan dari yg terbaru DESC
             $berkasmahasiswa = BerkasMahasiswa::latest()->paginate(5);
+            }
         } else {
             $nim = Session::get('user_nim');
             $berkasmahasiswa = BerkasMahasiswa::where('tb_berkas_mahasiswa.nim', $nim)->latest()->paginate(5);

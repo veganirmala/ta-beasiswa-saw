@@ -13,31 +13,24 @@ class MahasiswaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // if ($request->has('search')) {
-
-        //     $mahasiswa = DB::table('tb_mahasiswa')
-        //         ->join('tb_tahun_usulan', 'tb_mahasiswa.id_tahun_usulan', '=', 'tb_tahun_usulan.id')
-        //         ->join('tb_prodi', 'tb_mahasiswa.id_prodi', '=', 'tb_prodi.id')
-        //         ->select('*')
-        //         ->get()
-        //         ->where('nim', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        // } else {
-        //     $mahasiswa = DB::table('tb_mahasiswa')
-        //         ->join('tb_tahun_usulan', 'tb_mahasiswa.id_tahun_usulan', '=', 'tb_tahun_usulan.id')
-        //         ->join('tb_prodi', 'tb_mahasiswa.id_prodi', '=', 'tb_prodi.id')
-        //         ->select('*')
-        //         ->get()
-        //         ->paginate(5);
-        // }
-
+        if ($request->has('search')) {
+            $mahasiswa = DB::table('tb_mahasiswa')
+            ->join('tb_tahun_usulan', 'tb_mahasiswa.id_tahun_usulan', '=', 'tb_tahun_usulan.id')
+            ->join('tb_prodi', 'tb_mahasiswa.id_prodi', '=', 'tb_prodi.id')
+            ->select('*')
+            ->where('nim', 'LIKE', '%' . $request->search . '%')
+            ->orwhere('nama', 'LIKE', '%' . $request->search . '%')
+            ->get();
+        } else {
         //mengambil semua data
-        $mahasiswa = DB::table('tb_mahasiswa')
+            $mahasiswa = DB::table('tb_mahasiswa')
             ->join('tb_tahun_usulan', 'tb_mahasiswa.id_tahun_usulan', '=', 'tb_tahun_usulan.id')
             ->join('tb_prodi', 'tb_mahasiswa.id_prodi', '=', 'tb_prodi.id')
             ->select('*')
             ->get();
+        }
 
         //tampilkan halaman index
         return view('mahasiswa/index', data: compact('mahasiswa'));

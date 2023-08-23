@@ -34,6 +34,20 @@
                 <div class="card">
                     <!-- /.card-header -->
                     <div class="card-body">
+                    @if (auth()->User()->level == 'Admin')
+                        <div class="row">
+                            <div class="d-flex justify-content-end">
+                                <form action="/berkasmahasiswa" method="GET">
+                                    <div class="input-group mb-3">
+                                        <div class="col-auto">
+                                            <input type="search" class="form-control" placeholder="Search"
+                                                name="search" id="search">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    @endif
                         <a href="/berkasmahasiswa/create" class="btn btn-primary" title="Tambah Data"><i
                                 class="fas fa-plus"></i> Tambah</a>
                         <p></p>

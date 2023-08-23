@@ -12,13 +12,21 @@ class BobotKriteriaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->has('search')) {
+            $bobotkriteria = DB::table('tb_bobot_kriteria')
+            ->join('tb_tahun_usulan', 'tb_bobot_kriteria.id_tahun_usulan', '=', 'tb_tahun_usulan.id')
+            ->select('*')
+            ->where('tahun', 'LIKE', '%' . $request->search . '%')
+            ->get();
+        } else {
         //mengambil semua data
-        $bobotkriteria = DB::table('tb_bobot_kriteria')
+            $bobotkriteria = DB::table('tb_bobot_kriteria')
             ->join('tb_tahun_usulan', 'tb_bobot_kriteria.id_tahun_usulan', '=', 'tb_tahun_usulan.id')
             ->select('*')
             ->get();
+        }
         //tampilkan halaman index
         return view('bobotkriteria/index', data: compact('bobotkriteria'));
     }
