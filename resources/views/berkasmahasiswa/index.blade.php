@@ -48,9 +48,17 @@
                             </div>
                         </div>
                     @endif
+                        @if (auth()->User()->level == 'Mahasiswa')
+                        <?php if (empty($databerkasmahasiswa)) : ?>
                         <a href="/berkasmahasiswa/create" class="btn btn-primary" title="Tambah Data"><i
                                 class="fas fa-plus"></i> Tambah</a>
                         <p></p>
+                        <?php endif; ?>
+                        @else
+                        <a href="/berkasmahasiswa/create" class="btn btn-primary" title="Tambah Data"><i
+                                class="fas fa-plus"></i> Tambah</a>
+                        <p></p>
+                        @endif
                         <div class="table-responsive">
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>

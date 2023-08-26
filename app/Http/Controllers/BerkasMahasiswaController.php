@@ -23,13 +23,16 @@ class BerkasMahasiswaController extends Controller
             //mengambil semua data diurutkan dari yg terbaru DESC
             $berkasmahasiswa = BerkasMahasiswa::latest()->paginate(5);
             }
+            $databerkasmahasiswa = false;
+
         } else {
             $nim = Session::get('user_nim');
             $berkasmahasiswa = BerkasMahasiswa::where('tb_berkas_mahasiswa.nim', $nim)->latest()->paginate(5);
+            $databerkasmahasiswa = $berkasmahasiswa;
         }
 
         //tampilkan halaman index
-        return view('berkasmahasiswa/index', data: compact('berkasmahasiswa'));
+        return view('berkasmahasiswa/index', data: compact('berkasmahasiswa', 'databerkasmahasiswa'));
     }
 
     public function create()
