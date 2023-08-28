@@ -114,7 +114,7 @@
                                 <label for="total_penghasilan">Penghasilan Ayah<span style="color:red;">*</span></label>
                                 <input type="text" name="total_penghasilan"
                                     class="form-control @error('total_penghasilan') is-invalid @enderror"
-                                    id="total_penghasilan" onkeyup="sum();" placeholder="Penghasilan Ayah" required
+                                    id="total_penghasilan" placeholder="Penghasilan Ayah" required
                                     value="{{ old('total_penghasilan') }}">
                                 @error('total_penghasilan')
                                     <div class="invalid-feedback">
