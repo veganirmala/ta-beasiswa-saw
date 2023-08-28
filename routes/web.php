@@ -73,6 +73,8 @@ Route::group(['middleware' => ['auth'], 'cekLevel:Admin'], function () {
     Route::get('/berkasmahasiswa/{nim}/show', [BerkasMahasiswaController::class, 'show']);
     Route::get('/berkasmahasiswa/{nim}/edit', [BerkasMahasiswaController::class, 'edit']);
     Route::put('/berkasmahasiswa/{nim}', [BerkasMahasiswaController::class, 'update']);
+    Route::get('/berkasmahasiswa/{nim}/ubah', [BerkasMahasiswaController::class, 'ubah']);
+    Route::post('/berkasmahasiswa/{nim}/mengubah', [BerkasMahasiswaController::class, 'mengubah']);
 
     Route::get('/user', [UserController::class, 'index']);
     Route::get('/user/create', [UserController::class, 'create']);

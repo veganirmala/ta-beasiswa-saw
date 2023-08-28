@@ -34,30 +34,30 @@
                 <div class="card">
                     <!-- /.card-header -->
                     <div class="card-body">
-                    @if (auth()->User()->level == 'Admin')
-                        <div class="row">
-                            <div class="d-flex justify-content-end">
-                                <form action="/berkasmahasiswa" method="GET">
-                                    <div class="input-group mb-3">
-                                        <div class="col-auto">
-                                            <input type="search" class="form-control" placeholder="Search"
-                                                name="search" id="search">
+                        @if (auth()->User()->level == 'Admin')
+                            <div class="row">
+                                <div class="d-flex justify-content-end">
+                                    <form action="/berkasmahasiswa" method="GET">
+                                        <div class="input-group mb-3">
+                                            <div class="col-auto">
+                                                <input type="search" class="form-control" placeholder="Search"
+                                                    name="search" id="search">
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                    @endif
+                        @endif
                         @if (auth()->User()->level == 'Mahasiswa')
-                        <?php if (empty($databerkasmahasiswa)) : ?>
-                        <a href="/berkasmahasiswa/create" class="btn btn-primary" title="Tambah Data"><i
-                                class="fas fa-plus"></i> Tambah</a>
-                        <p></p>
-                        <?php endif; ?>
+                            <?php if (empty($databerkasmahasiswa)) : ?>
+                            <a href="/berkasmahasiswa/create" class="btn btn-primary" title="Tambah Data"><i
+                                    class="fas fa-plus"></i> Tambah</a>
+                            <p></p>
+                            <?php endif; ?>
                         @else
-                        <a href="/berkasmahasiswa/create" class="btn btn-primary" title="Tambah Data"><i
-                                class="fas fa-plus"></i> Tambah</a>
-                        <p></p>
+                            <a href="/berkasmahasiswa/create" class="btn btn-primary" title="Tambah Data"><i
+                                    class="fas fa-plus"></i> Tambah</a>
+                            <p></p>
                         @endif
                         <div class="table-responsive">
                             <table id="example2" class="table table-bordered table-hover">
@@ -92,9 +92,13 @@
                                         <td>{{ $berkas->status }}</td>
                                         <td>{{ $berkas->keterangan }}</td>
                                         <td>
-                                            <a href="/berkasmahasiswa/{{ $berkas->nim }}/show">View</a>
                                             @if (Session::get('user_level') == 'Admin')
-                                                <a href="/berkasmahasiswa/{{ $berkas->nim }}/edit">Edit</a>
+                                                <a href="/berkasmahasiswa/{{ $berkas->nim }}/show">View</a>
+                                                <a href="/berkasmahasiswa/{{ $berkas->nim }}/edit">Verifikasi</a>
+                                                <a href="/berkasmahasiswa/{{ $berkas->nim }}/ubah">Edit</a>
+                                            @else
+                                                <a href="/berkasmahasiswa/{{ $berkas->nim }}/show">View</a>
+                                                <a href="/berkasmahasiswa/{{ $berkas->nim }}/ubah">Edit</a>
                                             @endif
                                         </td>
                                     </tr>
