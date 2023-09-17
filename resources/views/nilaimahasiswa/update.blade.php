@@ -13,7 +13,15 @@
                 @csrf
                 <div class="form-group">
                     <label for="nim">NIM<span style="color:red;">*</span></label>
-                    <select class="form-control @error('nim') is-invalid @enderror" tabindex="-1" aria-hidden="true"
+                    <input type="text" name="nim" class="form-control @error('nim') is-invalid @enderror"
+                        id="nim" placeholder="NIM" required value="{{ old('nim', $nilaimahasiswa->nim) }}"
+                        readonly>
+                    @error('nim')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    {{-- <select class="form-control @error('nim') is-invalid @enderror" tabindex="-1" aria-hidden="true"
                         name="nim" id="nim" value="{{ old('nim') }}">
                         <option value="{{ $nilaimahasiswa->nim }}">{{ $nilaimahasiswa->nim }}</option>
                         @foreach ($mhs as $mahasiswa)
@@ -24,7 +32,7 @@
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
-                    @enderror
+                    @enderror --}}
                 </div>
                 <div class="form-group">
                     <label for="nilai_kepribadian">Nilai Kepribadian<span style="color:red;">*</span></label>

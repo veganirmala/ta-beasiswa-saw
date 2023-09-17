@@ -26,7 +26,8 @@ class BerkasMahasiswaController extends Controller
             $databerkasmahasiswa = false;
         } else {
             $nim = Session::get('user_nim');
-            $berkasmahasiswa = BerkasMahasiswa::where('tb_berkas_mahasiswa.nim', $nim)->latest()->paginate(5);
+            $berkasmahasiswa = BerkasMahasiswa::where('tb_berkas_mahasiswa.nim', $nim);
+            //->latest()->paginate(5);
             $databerkasmahasiswa = BerkasMahasiswa::where('tb_berkas_mahasiswa.nim', $nim)->first();
         }
 
