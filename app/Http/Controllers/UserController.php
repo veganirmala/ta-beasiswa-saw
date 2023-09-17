@@ -139,8 +139,7 @@ class UserController extends Controller
             'name' => 'required|max:255',
             'jk' => 'required',
             'no_telp' => 'required',
-            'alamat' => 'required',
-            'level' => 'required'
+            'alamat' => 'required'
         ]);
         //proses enkripsi password
         // $validatedData['password'] = bcrypt($validatedData['password']);
